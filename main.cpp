@@ -41,7 +41,7 @@ void init_roles(std::vector<std::shared_ptr<BaseRole>> &roles, int n) {
     roles[man_id] = std::shared_ptr<BaseRole> (new Maniac(man_id, logger));
     has_role[man_id] = true;
 
-    for (int i = 0; i < n/3; ++i) {
+    for (int i = 0; i < 2; ++i) {
         int mafia_id = chief_id;
         while (has_role[mafia_id])
             mafia_id = random(n);
@@ -351,7 +351,7 @@ int main() {
     std::vector<std::shared_ptr<BaseRole>> alive{players};
     std::vector<int> mafia_ids;
     int com_id, doc_id, man_id;
-    alive_mafia = n/3;
+    alive_mafia = 2;
     for (auto& x : players) {
         if (x->role == "chief")
             com_id = x->id;
@@ -362,7 +362,8 @@ int main() {
         if (x->role == "maniac")
             man_id = x->id;
     }
-    int boss_id = mafia_ids[random(n/3)];
+    int boss_id = mafia_ids[random(2)];
+
     if (play)
         (players[0].get())->greet(mafia_ids, boss_id);
     int round = 1;

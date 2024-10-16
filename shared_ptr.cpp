@@ -55,6 +55,11 @@ public:
     shared_ptr<T>& operator=(const shared_ptr<T>& other) {
         if (this->ptr == other.ptr)
             return *this;
+        if (*(this->counter) == 1) {
+            delete this->counter;
+            delete this->ptr;
+        }
+        (*(this->counter))--;
         this->ptr = other.ptr;
         this->counter = other.counter;
         (*(this->counter))++;
