@@ -50,7 +50,6 @@ public:
     }
 
     Solution(Solution& other) {
-        //cout <<"GOYDA" << endl;
         n = other.n;
         m = other.m;
         recalc.resize(m, {true, 0});
